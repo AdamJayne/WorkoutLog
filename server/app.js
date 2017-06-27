@@ -16,9 +16,33 @@ sequelize.authenticate().then(
 	}
 );
 
-var User = seq.define('user', {
+var User = sequelize.define('user', {
 	username: Sequelize.STRING,
-	passwordhash:
+	passwordhash: Sequelize.STRING,
+});
+
+User.sync();
+//  User.sync({force:true})
+
+app.use(bodyParser.json());
+
+app.post('/api/user', function(req, res){
+	var username = req.body.user.username;
+	var pass = req.body.user.password;
+	User.create({
+		username: username,
+		passwordhash: ""
+	}).then(
+		function createSuccess(user){
+			res.json({
+				user: user,
+				message: 'create'
+			});
+		},
+		function createError(err){
+			res.send(500, err.message);
+		}
+	);
 });
 
 app.use(require('./middleware/headers'));

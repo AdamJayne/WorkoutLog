@@ -1,5 +1,20 @@
 var express = require('express');
 var app = express();
+var Sequelize = require('sequelize');
+
+var sequelize = new Sequelize('workoutlog', 'postgres', 'It#RainsAllDay3342', {
+	host: 'localhost',
+	dialect: 'postgres'
+});
+// this code will be migrated to a differt file soon.
+sequelize.authenticate().then(
+	function(){
+		console.log('connected to workoutlog postgres db');
+	},
+	function(err){
+		console.log(err);
+	}
+);
 
 app.use(require('./middleware/headers'));
 

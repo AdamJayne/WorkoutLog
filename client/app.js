@@ -6,13 +6,13 @@ $(document).ready(function(){
 	var test = $.ajax({
 		type: "GET",
 		url: "http://localhost:3000/api/test"
-	})
+	});
 	// .done() = deferred promise
-	.done(function(data){
+	test.done(function(data){
 		console.log(data);
-	})
+	});
 
-	.fail(function(){
+	test.fail(function(){
 		console.log("Oops, the server is not responding");
 	});
 });

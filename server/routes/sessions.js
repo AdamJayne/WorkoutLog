@@ -17,9 +17,11 @@ router.post('/', function(req, res){
 							sessionToken: token
 						});
 					}else{
-						res.status(500).send({error: "Failed to Authenticate"});
+						res.status(500).send({error: "Failed to authenticate password"});
 					}
 				});
+			}else {
+				res.status(500).send({error: "User doesn't exist"});
 			}
 		}, 
 		function(err){

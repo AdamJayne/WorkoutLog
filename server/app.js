@@ -25,3 +25,5 @@ app.use('/api/test', function(req, res){
 app.listen(3000, function(){
 	console.log("app is listening on 3000");
 });
+
+// Challenge go to postman, create a new user, then login with that user

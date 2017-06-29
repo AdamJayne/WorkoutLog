@@ -18,6 +18,8 @@ app.use('/api/user', require('./routes/user'));
 //  Log into as a user
 app.use('/api/login', require('./routes/sessions'));
 
+app.use('/api/definition', require('./routes/definition')); 
+
 app.use('/api/test', function(req, res){
 	res.send("<h1>Hello World</h1>" + "<h2>It's a small world</h2>");
 });

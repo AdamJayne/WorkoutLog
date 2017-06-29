@@ -16,12 +16,38 @@ $(document).ready(function(){
 			setAuthHeader: setAuthHeader
 		}
 	})(jQuery);
+//  Code in this section is breaking the Document
+	// $('.nav-tabs a[data-toggle]="tab"').on("click", function(e){
+	// 	var token = window.localStorage.getItem("sessionToken");
+	// 	if($(this).hasClass("disabled") && !token){
+	// 		e.preventDefault();
+	// 		return false;
+	// 	}
+	// });
 
-	$(".nav-tabs a[data-toggle]='tab'").on("Click", function(e){
-		var token = window.localStorage.getItem("sessionToken");
-		if($(this).hasClass("disabled") && ! token){
-			e.preventDefault();
-			return false;
+	$('a[data-toggle = "tab"]').on('shown.bs.tab', function(e){
+		var target = $(e.target).attr("href");
+		if(target === "#log"){
+			WorkoutLog.log.setDefinitions();
 		}
-	})
+
+		if(target === "#history"){
+			WorkoutLog.log.setHistory();
+		}
+	});
+	$(document).on('keypress', function(e){
+		if(e.which ===13){
+			if($("#signup-module").is(":visible")){
+				$("#signup").trigger("click");
+			}
+			if($("#login-model").is(":visible")){
+				$("#login").trigger("click");
+			}
+		}
+	});
+	var token = window.localStorage.getItem("sessionToken");
+	if(token){
+		WorkoutLog.setAuthHeader(token);
+	};
+	window.WorkoutLog = WorkoutLog;
 });

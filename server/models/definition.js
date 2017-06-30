@@ -1,7 +1,9 @@
-module.exports = function(seq, DataTypes){
-	return seq.define('definition', {
-		description: DataType.STRING,
-		logType: DataType.STRING,
-		owner: DataType.INTEGER
-	})
-};
+module.exports = function(sequelize, DataTypes){
+	var definition = sequelize.define('definition', {
+		description: DataTypes.STRING,
+		logType: DataTypes.STRING,
+		owner: DataTypes.INTEGER
+	});
+
+	return definition;
+}

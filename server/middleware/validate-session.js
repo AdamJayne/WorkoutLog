@@ -3,7 +3,7 @@ var sequelize = require('../db');
 var User = sequelize.import('../models/user');
 
 module.exports = function(req, res, next){
-	var sessionToken = req.header.authorization;
+	var sessionToken = req.headers.authorization;
 	if(!req.body.user && sessionToken){
 		jwt.verify(sessionToken, process.env.JWT_SECRET, function(err, decoded){
 			if(decoded){

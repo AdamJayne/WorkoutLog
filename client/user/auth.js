@@ -44,7 +44,7 @@ $(document).ready(function(){
 				url: WorkoutLog.API_BASE + "login",
 				data: JSON.stringify(user),
 				contentType: "application/json"
-			})
+			});
 
 			login.done(function(data){
 				if(data.sessionToken){

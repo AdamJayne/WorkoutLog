@@ -46,7 +46,10 @@
 			            <option>Weight</option>
 			            <option>Reps</option>
 			          </select>
-			        
+			        	<div id="define-success" class="alert alert-success" hidden>You added a new category!
+					</div>
+					<div id="define-fail" class="alert alert-danger" hidden>Failed to add new category
+					</div>
 			          <br>
 			          <button id="def-save" class="btn btn-primary">Save</button>
 			      </div>
@@ -134,10 +137,7 @@
 			   </div>
 			 </div>
 			</div>
-			<div id="define-success" class="modal alert alert-success fade">You added a new category!
-			</div>
-			<div id="define-fail" class="modal alert alert-danger fade">Failed to add new category
-			</div>
+			
 
 		<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -145,6 +145,7 @@
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./user/auth.js"></script>
 		<script type="text/javascript" src="./workout/define.js"></script>
+		<script type="text/javascript" src="./workout/log.js"></script>
 	</body>
 
 </html>

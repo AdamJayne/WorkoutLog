@@ -35,6 +35,7 @@ $(document).ready(function(){
 			WorkoutLog.log.setHistory();
 		}
 	});
+
 	$(document).on('keypress', function(e){
 		if(e.which ===13){
 			if($("#signup-module").is(":visible")){

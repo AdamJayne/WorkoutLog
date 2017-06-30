@@ -15,4 +15,5 @@ sequelize.authenticate().then(
 
 var User = sequelize.import('./models/user');
 var Definition = sequelize.import('./models/definition');
+var Log = sequelize.import('./models/log')
 module.exports = sequelize;

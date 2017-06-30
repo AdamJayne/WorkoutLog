@@ -1,0 +1,18 @@
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('workoutlog', 'postgres', 'It#RainsAllDay3342', {
+	host: 'localhost',
+	dialect: 'postgres'
+});
+
+sequelize.authenticate().then(
+	function(){
+		console.log('connected to workoutlog postgres db');
+	},
+	function(err){
+		console.log(err);
+	}
+);
+
+var User = sequelize.import('./models/user');
+var Definition = sequelize.import('./models/definition');
+module.exports = sequelize;

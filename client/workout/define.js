@@ -29,12 +29,23 @@ $(document).ready(function(){
 
 			fetchAll: function(){
 				if( window.localStorage.getItem("sessionToken")){
-					WorkoutLog.definition.userDefinition;
+					$.ajax({
+						type: "GET",
+						url: WorkoutLog.API_BASE + "definition",
+						headers: {
+							"Authorization" : window.localStorage.getItem("sessionToken")
+						}
+					 }) .done(function(data){
+					// 	console.log(data);
+					// 	WorkoutLog.definition.userDefinition.push(data.description);
+					// });
+					WorkoutLog.definition.userDefinition
+					})
 				}
 			}
 		}
 	});
-
-	$('#def-save').on('click', WorkoutLog.definition.create);
+	
+	$('#def-save').on('click', WorkoutLog.definition.create)
 
 })

@@ -22,7 +22,7 @@ $(document).ready(function(){
 				var lis = "";
 
 				for(var i = 0; i < len; i++){
-					lis += "<li class='list-group-item'>" + history[i].def +" - " + history[i].result + "</li>"
+					lis += "<li class='list-group-item'>" + history[i].def +" - " + history[i].result + "<div class='pull-right'>"+"<button id='"+ history[i].id + "' class = 'remove glyphicon glyphicon-trash'>"+ "</li>"
 				}
 
 				$("#history-list").children().remove();
@@ -65,12 +65,37 @@ $(document).ready(function(){
 				}).fail(function(err){
 					console.log("This error happened: "+err);
 				});
+			},
+			delete: function(){
+				var thisLog = {
+					id: $(this).attr("id")
+				};
+
+				var deleteData = {log: thisLog};
+				var deleteLog = $.ajax({
+					type: "DELETE",
+					url: WorkoutLog.API_BASE + "log",
+					data: JSON.stringify(deleteData),
+					contentType: "application/json"
+				});
+
+				$(this).closest("li").remove();
+				for(var i = 0; i < WorkoutLog.log.workouts.length; i++){
+					if(WorkoutLog.log.workouts[i].id == thisLog.id){
+						WorkoutLog.log.workouts.splice(i, 1);
+					}
+				};
+				deleteLog.fail(function(){
+					console.log("The workout was not deleted!");
+				});
 			}
 		}
 	})
 
 	$('#log-save').on('click', WorkoutLog.log.create);
+	$('#history-list').delegate('.remove', 'click', WorkoutLog.log.delete);
 	if (window.localStorage.getItem("sessionToken")){
-		WorkoutLog.log.fetchAll();
+		WorkoutLog.log.fetchAll()
+		// WorkoutLog.definition.fetchAll()
 	}
 });

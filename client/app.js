@@ -42,10 +42,10 @@ $(document).ready(function(){
 
 	$(document).on('keypress', function(e){
 		if(e.which ===13){
-			if($("#signup-module").is(":visible")){
+			if($("#signup-modal").is(":visible")){
 				$("#signup").trigger("click");
 			}
-			if($("#login-model").is(":visible")){
+			if($("#login-modal").is(":visible")){
 				$("#login").trigger("click");
 			}
 		}

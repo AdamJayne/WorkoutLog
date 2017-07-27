@@ -31,12 +31,16 @@ $(document).ready(function(){
 			WorkoutLog.log.setDefinitions();
 		}
 
+		if(target === "#update-log"){
+			WorkoutLog.log.setDefinitions();
+		}
+
 		if(target === "#history"){
 			WorkoutLog.log.setHistory();
 		}
 
 		if(target === "#update-log"){
-			Workout.log.setDefinitions();
+			WorkoutLog.log.setDefinitions();
 		}
 	});
 

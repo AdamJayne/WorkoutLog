@@ -1,0 +1,23 @@
+body {
+	background-image: url(/img/background.png);
+}
+
+.nav {
+	background: rgba(117, 117, 117, 0.8);
+	color: white;
+}
+
+.lists{
+	color: white;
+}
+
+#homePage {
+	background: rgba(255, 255, 255, 0.7);
+	margin-top: 1em;
+	border-radius: 1em;
+}
+
+#home {
+	text-align: center;
+	margin-top: 12%;
+}

@@ -18,9 +18,9 @@ app.use(require('./middleware/validate-session'));
 app.use('/api/user', require('./routes/user'));
 //  Log into as a user
 app.use('/api/login', require('./routes/sessions'));
-
+//  Create a definition
 app.use('/api/definition', require('./routes/definition')); 
-
+//   Create a workout log
 app.use('/api/log', require('./routes/log'));
 
 

@@ -38,6 +38,46 @@ router.get('/', function(req, res){
 		)
 });
 
+router.get('/:id', function(req,res){
+	var data=req.params.id;
+	console.log(data);
+	Log
+		.findOne({
+			where: {id: data}
+		}).then(
+			function getSuccess(updateData){
+				res.json(updateData);
+			},
+			function getError(err){
+				res.send(500, err.message);
+			}
+		);
+});
+
+router.put('/', function(req, res){
+	var description = req.body.log.desc;
+	var result = req.body.log.id;
+	var data = req.body.log.id;
+	var definition = req.body.log.def;
+	consol.log(req);
+	Log
+		.update(
+		{
+			description: description,
+			result: result,
+			def: definition
+		},
+		{where: {id: data}}
+		).then(
+			function updateSuccess(updatedLog){
+				res.json(updatedLog);
+			},
+			function updateError(err){
+				res.send(500, err.message);
+			}
+		);
+});
+
 router.delete('/', function(req, res){
 	var data = req.body.log.id;
 
